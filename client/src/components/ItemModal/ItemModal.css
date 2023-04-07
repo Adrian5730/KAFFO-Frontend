@@ -1,13 +1,52 @@
-.loading {
-    color: white;
+.item-modal {
     position: absolute;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.image-container {
+    max-width: 70vw;
+    margin: 0 auto;
+    position: relative;
+}
+
+.image-container img {
     width: 100%;
-    z-index: 5;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+#heart-button {
+    border: 1px solid gray;
+    position: absolute;
+    background-color: white;
     top: 0;
+    right: 0;
+    transform: translate(25%, -25%);
+}
+
+
+
+.button-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color:#2C2C2C ;
+    justify-content: space-between;
+    gap: 5px
+}
+
+#more-details-button {
+    background-color: gray;
+}
+
+#cart-button {
+    background-color: green;
+}
+
+#buy-button {
+    background-color: orange;
 }
