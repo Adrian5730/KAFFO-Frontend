@@ -1,0 +1,16 @@
+.container-imagen-fondo {
+    position: fixed;
+    margin-top: 15vh;
+    z-index: -1;
+    width: 100%;
+    filter: grayscale(100%) saturate(0);
+
+}
+
+
+.imagen-fondo {
+    width: 100%;
+    transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+

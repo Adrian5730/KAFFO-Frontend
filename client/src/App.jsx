@@ -1,30 +1,22 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import axios from "axios";
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+import HomeContainer from './components/HomeContainer/HomeContainer'
+import CartContainer from './components/cartContainer/cartContainer'
+
+import UserContainer from './components/UserContainer/UserContainer'
+import FavoritesContainer from './components/FavoritesContainer/FavoritesContainer'
 
 function App() {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    axios.get('/api')
-    .then((res) => {
-      console.log(res.data);
-      setData(res.data);
-    })
-    .catch((err) => {
-      console.error(err);
-    });  
-  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={reactLogo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data.message}</p>
-        <a href="">Amo a mi amore!!!</a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomeContainer />}></Route>
+        <Route path='/cart' element={<CartContainer />}></Route>
+        <Route path='/favorites' element={<FavoritesContainer />}></Route>
+        <Route path='/user/:login_register' element={<UserContainer />}></Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App

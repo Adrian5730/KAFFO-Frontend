@@ -1,0 +1,17 @@
+.container-btn-login {
+    background-color: #BA521D;
+    min-height: 20px;
+    min-width: 90%;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.btn-login {
+    border: 0;
+    background-color: #BA521D;
+    color: #FFF;
+    font-size: 20px;
+}

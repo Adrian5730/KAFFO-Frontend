@@ -1,0 +1,24 @@
+.input-search {
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 5px 20px 5px 10px;
+    min-width: 100%;
+    min-height: 35px;
+    border: 0px;
+}
+
+
+.container-search {
+    width: 75%;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+
+#icon-search {
+    position: absolute;
+    right: 0;
+    padding-right: 5px;
+    mask-type: alpha;
+}

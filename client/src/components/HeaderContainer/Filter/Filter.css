@@ -1,0 +1,10 @@
+#icon-filter {
+    fill: white;
+}
+
+.container-icon-filter {
+    background-color: #BA521D;
+    border-radius: 25px;
+    display: flex;
+    padding: 8px;
+}

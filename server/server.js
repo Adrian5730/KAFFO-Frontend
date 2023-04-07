@@ -1,16 +1,16 @@
 const express = require('express');
 const path = require('path');
 // const cookieParser = require('cookie-parser');
-// const logger = require('morgan');
+const logger = require('morgan');
 const { Server: HttpServer } = require('http')
 // const session = require('express-session');
 // const passport = require('passport');
 
 const app = express();
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 const httpServer = new HttpServer(app)
 const PORT = process.env.PORT || 5050
-// const homeRouter = require('./routes/homeRouter')
+const homeRouter = require('./routes/homeRouter')
 // const serviceRouter = require('./routes/serviceRouter')
 // const responseRouter = require('./routes/responseRouter');
 // const loginRouter = require('./routes/loginRouter')
@@ -19,23 +19,22 @@ const PORT = process.env.PORT || 5050
 
 // const io = require('socket.io')(httpServer);
 // global.io = io;
-// dotenv.config();
+dotenv.config();
 
 // app.set('view engine', 'ejs')
-// app.use(logger('dev'));
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/api', (req, res) => {
-    res.json({ message: 'Hello from Express!' });
-});
+app.use(express.static(path.join(__dirname, '..', 'client', 'assets')));
+
 
 // app.use(session({ secret: 'trabajo', resave: false, saveUninitialized: true }));
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-// app.use('/', homeRouter);
+app.use('/productos', homeRouter);
 // app.use('/service', serviceRouter);
 // app.use('/response', responseRouter);
 

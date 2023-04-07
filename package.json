@@ -1,8 +1,9 @@
 {
   "dependencies": {
-    "concurrently": "^7.0.0"
+    "concurrently": "^7.0.0",
+    "google-spreadsheet": "^3.3.0"
   },
   "scripts": {
-    "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\""
+    "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev -- --host\""
   }
 }
