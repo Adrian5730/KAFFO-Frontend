@@ -9,11 +9,13 @@ const ItemListContainer = () => {
   const [productos, setProductos] = useState(null);
   const [loading, setloading] = useState(true);
 
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [modalData, setModalData] = useState({});
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  console.log("productos", productos);
   useEffect(() => {
     axios
       .get("/productos")
@@ -26,21 +28,36 @@ const ItemListContainer = () => {
       });
   }, []);
 
+  const favoritos = JSON.parse(localStorage.getItem("favorites")) || [];
+
   return (
     <div className="container-cards">
-      <ItemModal open={open} onClose={handleClose} />
+      <ItemModal open={open} onClose={handleClose} modalData={modalData} />
 
       {loading ? (
         <LoadingContainer />
       ) : (
-        productos.map(({ id, nombre, codigo, descripcion }) => (
-          <Item
-            key={id}
-            nombre={nombre}
-            codigo={id}
-            descripcion={descripcion}
-          />
-        ))
+        productos.map(({ id, nombre, descripcion, precio }) => {
+          return (
+            <Item
+              key={id}
+              nombre={nombre}
+              codigo={id}
+              descripcion={descripcion}
+              onClick={() => {
+                setModalData({
+                  descripcion,
+                  id,
+                  nombre,
+                  precio,
+                  url: `images/capsulas/${id}.jpg`,
+                  isFavorite: favoritos.includes(id),
+                });
+                setOpen(true);
+              }}
+            />
+          );
+        })
       )}
     </div>
   );
