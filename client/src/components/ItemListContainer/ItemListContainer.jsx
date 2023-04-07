@@ -3,6 +3,8 @@ import axios from "axios";
 import './ItemListContainer.css'
 import Item from './Item/Item'
 import LoadingContainer from '../LoadingContainer/LoadingContainer';
+import ItemModal from '../ItemModal/ItemModal';
+
 const ItemListContainer = () => {
   const [productos, setProductos] = useState(null);
   const [loading, setloading] = useState(true)
@@ -20,6 +22,7 @@ const ItemListContainer = () => {
 
   return (
     <div className='container-cards'>
+    <ItemModal />
 
       {loading ?
         <LoadingContainer />
