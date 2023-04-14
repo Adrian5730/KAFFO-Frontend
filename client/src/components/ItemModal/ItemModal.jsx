@@ -3,7 +3,25 @@ import "./ItemModal.css";
 import { Button, IconButton, Modal } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const ItemModal = ({ open, onClose, modalData }) => {
+const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
+  const favoritos = JSON.parse(localStorage.getItem("favorites")) || [];
+  const isFavorite = favoritos.includes(modalData.id);
+
+  const handleFavoriteClick = () => {
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const index = favorites.indexOf(modalData.id);
+
+    if (index !== -1) {
+      favorites.splice(index, 1);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    } else {
+      favorites.push(modalData.id);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+
+    onFavoriteChange();
+  };
+
   return (
     <Modal open={open} onClose={onClose}>
       <div className="item-modal">
@@ -12,7 +30,8 @@ const ItemModal = ({ open, onClose, modalData }) => {
 
           <IconButton
             id="heart-button"
-            className={modalData.isFavorite ? "active" : ""}
+            className={isFavorite ? "active" : ""}
+            onClick={handleFavoriteClick}
           >
             <FavoriteIcon className="icon" />
           </IconButton>

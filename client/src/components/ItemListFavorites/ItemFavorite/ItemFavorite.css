@@ -51,3 +51,13 @@
     top: 3px;
     right: 6px;
 }
+
+.name-capsule-favorite {
+    max-width: 190px;
+    width: fit-content;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+}

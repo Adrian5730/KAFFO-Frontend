@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "./ItemListContainer.css";
 import Item from "./Item/Item";
@@ -12,27 +12,36 @@ const ItemListContainer = () => {
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({});
 
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  console.log("productos", productos);
-  useEffect(() => {
-    axios
-      .get("/productos")
-      .then((res) => {
-        setProductos(res.data);
-        setloading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const updateProduct = useCallback(async (showLoader = true) => {
+    if (showLoader) setloading(true);
+
+    try {
+      const response = await axios.get("/productos");
+
+      setProductos(response.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      if (showLoader) setloading(false);
+    }
   }, []);
 
-  const favoritos = JSON.parse(localStorage.getItem("favorites")) || [];
+  useEffect(() => {
+    updateProduct();
+  }, [updateProduct]);
 
   return (
     <div className="container-cards">
-      <ItemModal open={open} onClose={handleClose} modalData={modalData} />
+      <ItemModal
+        open={open}
+        onClose={handleClose}
+        modalData={modalData}
+        onFavoriteChange={async () => {
+          await updateProduct(false);
+        }}
+      />
 
       {loading ? (
         <LoadingContainer />
@@ -51,7 +60,6 @@ const ItemListContainer = () => {
                   nombre,
                   precio,
                   url: `images/capsulas/${id}.jpg`,
-                  isFavorite: favoritos.includes(id),
                 });
                 setOpen(true);
               }}
