@@ -4,7 +4,6 @@
     "google-spreadsheet": "^3.3.0"
   },
   "scripts": {
-    "dep": "concurrently \"cd ./server && npm install\" \"cd ./client && npm install \"",
-    "start": "concurrently \"cd ./server &&  npm run server\" \"cd ./client && npm run dev\""
+    "start": "concurrently \"cd ./server && npm install\" \"cd ./client && npm install \" \"cd ./server &&  npm run server\" \"cd ./client && npm run dev\""
   }
 }
