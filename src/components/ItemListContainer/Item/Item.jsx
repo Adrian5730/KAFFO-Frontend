@@ -2,26 +2,25 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import "./Item.css";
 import { useEffect, useState } from "react";
 const Item = (props) => {
-  const { nombre, codigo, descripcion, onClick } = props;
-
+  const { name, code, description, onClick } = props;
   const [claseActiva, setClaseActiva] = useState(false);
 
   useEffect(() => {
     const favoritos = JSON.parse(localStorage.getItem("favorites")) || [];
-    setClaseActiva(favoritos.includes(codigo));
-  }, [codigo]);
+    setClaseActiva(favoritos.includes(code));
+  }, [code]);
 
   const handleFavoriteClick = (event) => {
     event.stopPropagation();
 
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    const index = favorites.indexOf(codigo);
+    const index = favorites.indexOf(code);
     if (index !== -1) {
       favorites.splice(index, 1);
       localStorage.setItem("favorites", JSON.stringify(favorites));
       setClaseActiva(false);
     } else {
-      favorites.push(codigo);
+      favorites.push(code);
       localStorage.setItem("favorites", JSON.stringify(favorites));
       setClaseActiva(true);
     }
@@ -30,18 +29,18 @@ const Item = (props) => {
   return (
     <div className="card" onClick={onClick}>
       <img
-        src={`images/capsulas/${codigo}.jpg`}
-        alt={`Imagen de producto ${codigo}`}
+        src={`images/capsulas/${code}.jpg`}
+        alt={`Imagen de producto ${code}`}
       />
       <button
         type="button"
         className="btn-item"
         data-name="card"
-        data-code={codigo}
-        data-img-src={`images/capsulas/${codigo}.jpg`}
-        data-capsule-name={nombre}
+        data-code={code}
+        data-img-src={`images/capsulas/${code}.jpg`}
+        data-capsule-name={name}
         data-brand="nesspresso"
-        data-description={descripcion}
+        data-description={description}
         data-price="Precio"
       ></button>
       <div className="container-icon-favorite">

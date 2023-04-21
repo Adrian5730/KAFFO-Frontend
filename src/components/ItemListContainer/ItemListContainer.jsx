@@ -46,20 +46,20 @@ const ItemListContainer = () => {
       {loading ? (
         <LoadingContainer />
       ) : (
-        productos.map(({ id, nombre, descripcion, precio }) => {
+        productos.map(({ id, name, code, description, price }) => {
           return (
             <Item
               key={id}
-              nombre={nombre}
-              codigo={id}
-              descripcion={descripcion}
+              name={name}
+              code={code}
+              description={description}
               onClick={() => {
                 setModalData({
-                  descripcion,
+                  description,
                   id,
-                  nombre,
-                  precio,
-                  url: `images/capsulas/${id}.jpg`,
+                  name,
+                  price,
+                  url: `images/capsulas/${code}.jpg`,
                 });
                 setOpen(true);
               }}

@@ -37,13 +37,13 @@ const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
           </IconButton>
         </div>
 
-        <h2 className="title">{modalData.nombre || ""}</h2>
+        <h2 className="title">{modalData.name || ""}</h2>
 
-        <p className="description">{modalData.descripcion || ""}</p>
+        <p className="description">{modalData.description || ""}</p>
 
         <div className="button-container price-container">
           <span>
-            Precio: <b>${modalData.precio || 0}</b>
+            Precio: <b>${modalData.price || 0}</b>
           </span>
 
           <Button id="more-details-button" variant="contained" size="small">
