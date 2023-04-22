@@ -9,7 +9,6 @@ const connection = async (query, values) => {
     })
     const connection = await pool.getConnection()
     try {
-        console.log('Conexión a la base de datos MySQL establecida.')
         const [rows] = await connection.execute(query, values)
         return rows
     } catch (error) {
@@ -17,7 +16,6 @@ const connection = async (query, values) => {
         return []
     } finally {
         connection.release()
-        console.log('Conexión a la base de datos MySQL cerrada.')
     }
 }
 

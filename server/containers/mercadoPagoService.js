@@ -63,28 +63,28 @@ class MercadoPagoService {
         return subscription.data.init_point;
     }
 
-    // async getPayment(id) {
-    //     mercadopago.configure({
-    //         access_token: process.env.ACCESS_TOKEN
-    //     });
+    async getPayment(id) {
+        mercadopago.configure({
+            access_token: process.env.ACCESS_TOKEN
+        });
 
-    //     let request = mercadopago.payment.findById(id)
-    //         .then(function (data) {
-    //             if(data.body.status){
-    //                 sheet.venta = {
-    //                     id: id,
-    //                     titulo: data.body.description,
-    //                     monto: data.body.transaction_amount,
-    //                     estado: "pendiente",
-    //                 }
-    //                 serviceGoogle.insertVentas(sheet.id, sheet.tituloSolapa, sheet.venta)
-    //                 return true
-    //             }
-    //         }).catch(function (error) {
-    //             console.log(error)
-    //         });
-    //     return request
-    // }
+        let request = mercadopago.payment.findById(id)
+            .then(function (data) {
+                if(data.body.status){
+                    sheet.venta = {
+                        id: id,
+                        titulo: data.body.description,
+                        monto: data.body.transaction_amount,
+                        estado: "pendiente",
+                    }
+                    serviceGoogle.insertVentas(sheet.id, sheet.tituloSolapa, sheet.venta)
+                    return true
+                }
+            }).catch(function (error) {
+                console.log(error)
+            });
+        return request
+    }
 
 };
 

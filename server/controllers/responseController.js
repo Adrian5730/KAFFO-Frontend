@@ -32,6 +32,7 @@ class responseController {
 
     async notificationPayments(req, res){
         let notificationRequest = await paymentInstance.getPayment(req.query.id)
+        console.log("Entro un nuevo pago move el esp loco");
         if(notificationRequest){
             io.sockets.emit('message', { ventas: [{id: notificationRequest}]  })
         }

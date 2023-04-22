@@ -9,8 +9,6 @@ const ItemListFavorites = () => {
   const [favorites, setfavorites] = useState([]);
   const [favoritesProducts, setfavoritesProducts] = useState([]);
 
-  console.log("favoritesProducts", favoritesProducts);
-
   useEffect(() => {
     axios
       .get("/productos")
@@ -23,12 +21,13 @@ const ItemListFavorites = () => {
       });
 
     setfavorites(JSON.parse(localStorage.getItem("favorites")) || []);
+
   }, []);
 
   useEffect(() => {
     if (products && favorites.length > 0) {
       setfavoritesProducts(
-        products.filter((product) => favorites.includes(product.id))
+        products.filter((product) => favorites.includes(product.code))
       );
     }
   }, [products, favorites]);
@@ -38,13 +37,13 @@ const ItemListFavorites = () => {
       {loading ? (
         <LoadingContainer />
       ) : favoritesProducts.length !== 0 ? (
-        favoritesProducts.map(({ id, nombre, codigo, descripcion, precio }) => (
+        favoritesProducts.map(({ id, name, code, description, price }) => (
           <ItemFavorite
             key={id}
-            name={nombre}
-            code={id}
-            description={descripcion}
-            price={precio}
+            name={name}
+            code={code}
+            description={description}
+            price={price}
           />
         ))
       ) : (
