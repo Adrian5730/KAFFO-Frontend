@@ -58,6 +58,7 @@ const ItemListContainer = () => {
                   description,
                   id,
                   name,
+                  code,
                   price,
                   url: `images/capsulas/${code}.jpg`,
                 });

@@ -5,18 +5,18 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import axios from "axios";
 
 const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
-  const favoritos = JSON.parse(localStorage.getItem("favorites")) || [];
-  const isFavorite = favoritos.includes(modalData.id);
+  const favorite = JSON.parse(localStorage.getItem("favorites")) || [];
+  const isFavorite = favorite.includes(modalData.code);
 
   const handleFavoriteClick = () => {
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    const index = favorites.indexOf(modalData.id);
+    const index = favorites.indexOf(modalData.code);
 
     if (index !== -1) {
       favorites.splice(index, 1);
       localStorage.setItem("favorites", JSON.stringify(favorites));
     } else {
-      favorites.push(modalData.id);
+      favorites.push(modalData.code);
       localStorage.setItem("favorites", JSON.stringify(favorites));
     }
 
@@ -33,7 +33,6 @@ const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
     const getUrl_MP = await axios.post("/payment", orden)
     const paymentUrl = getUrl_MP.data.linkPaymentMP;
     window.open(paymentUrl);
-
   }
 
   return (

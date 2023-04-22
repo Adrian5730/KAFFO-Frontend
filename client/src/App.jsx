@@ -16,7 +16,6 @@ function App() {
         <Route path='/favorites' element={<FavoritesContainer />}></Route>
         <Route path='/user/:login_register' element={<UserContainer />}></Route>
         <Route path='/response/:status_MP' element={<ResponseContainer />}></Route>
-
       </Routes>
     </BrowserRouter>
   )
