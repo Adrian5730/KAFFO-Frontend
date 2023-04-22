@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import HomeContainer from './components/HomeContainer/HomeContainer'
-import CartContainer from './components/cartContainer/cartContainer'
+import CartContainer from './components/CartContainer/CartContainer'
 
 import UserContainer from './components/UserContainer/UserContainer'
 import FavoritesContainer from './components/FavoritesContainer/FavoritesContainer'
