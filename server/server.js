@@ -11,8 +11,8 @@ const dotenv = require('dotenv');
 const httpServer = new HttpServer(app)
 const PORT = process.env.PORT || 5050
 const homeRouter = require('./routes/homeRouter')
-// const serviceRouter = require('./routes/serviceRouter')
-// const responseRouter = require('./routes/responseRouter');
+const serviceRouter = require('./routes/serviceRouter')
+const responseRouter = require('./routes/responseRouter');
 // const loginRouter = require('./routes/loginRouter')
 // const registerRouter = require('./routes/registerRouter');
 // const apiRouter = require('./routes/apiRouter');
@@ -35,8 +35,8 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'assets')));
 // app.use(passport.session());
 
 app.use('/productos', homeRouter);
-// app.use('/service', serviceRouter);
-// app.use('/response', responseRouter);
+app.use('/service', serviceRouter);
+app.use('/response', responseRouter);
 
 httpServer.listen(PORT, () => { console.log("Se inicio el servidor en el puerto N° " + PORT) })
 

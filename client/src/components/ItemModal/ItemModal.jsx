@@ -2,6 +2,7 @@ import React from "react";
 import "./ItemModal.css";
 import { Button, IconButton, Modal } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import axios from "axios";
 
 const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
   const favoritos = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -21,6 +22,19 @@ const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
 
     onFavoriteChange();
   };
+
+  const buy_now = async () => {
+    const orden = [{
+      title: modalData.name,
+      quantity: 1,
+      currency_id: 'ARS',
+      unit_price: Number(modalData.price)
+    }]
+    const getUrl_MP = await axios.post("/payment", orden)
+    const paymentUrl = getUrl_MP.data.linkPaymentMP;
+    window.open(paymentUrl);
+
+  }
 
   return (
     <Modal open={open} onClose={onClose}>
@@ -56,7 +70,7 @@ const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
             Agregar al carrito
           </Button>
 
-          <Button id="buy-button" variant="contained" size="medium">
+          <Button id="buy-button" onClick={buy_now} variant="contained" size="medium">
             Comprar Ahora
           </Button>
         </div>
