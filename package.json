@@ -5,9 +5,9 @@
   },
   "scripts": {
     "update": "concurrently \"cd ./server && npm install &&  npm run server\" \"cd ./client && npm install && npm run dev\"",
-    "dev": "cd ./client && npm run dev",
+    "dev": "concurrently \" npm run server \" \" npm run client \"",
     "server": "cd ./server && npm start",
-    "client": "cd ./client && npm start",
+    "client": "cd ./client && npm run dev",
     "start": "concurrently \"cd ./server && npm start \" \"cd ./client && npm start\""
   }
 }

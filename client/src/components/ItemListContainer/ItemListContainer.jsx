@@ -4,7 +4,6 @@ import "./ItemListContainer.css";
 import Item from "./Item/Item";
 import LoadingContainer from "../LoadingContainer/LoadingContainer";
 import ItemModal from "../ItemModal/ItemModal";
-import { getData } from "../../../utils/getMocks";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState(null);
@@ -19,11 +18,9 @@ const ItemListContainer = () => {
     if (showLoader) setloading(true);
 
     try {
-      // const response = await axios.get("/productos");
+      const response = await axios.get("/productos");
 
-      const response = await getData();
-      console.log(response)
-      setProductos(response);
+      setProductos(response.data);
     } catch (error) {
       console.error(error);
     } finally {
