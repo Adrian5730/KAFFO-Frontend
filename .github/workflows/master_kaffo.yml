@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'KAFFO'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0ADFF3E080D14D328CA03287F4A38C39 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AF7D84E17828438EB9F8810CA5A1ADED }}
           package: .
