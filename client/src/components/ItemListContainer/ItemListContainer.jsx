@@ -18,7 +18,7 @@ const ItemListContainer = () => {
     if (showLoader) setloading(true);
 
     try {
-      const response = await axios.get("/productos");
+      const response = await fetch("backend-kaffo-production-8463.up.railway.app/productos");
 
       setProductos(response.data);
     } catch (error) {
