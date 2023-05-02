@@ -6,6 +6,7 @@
   "scripts": {
     "update": "concurrently \"cd ./server && npm install &&  npm run server\" \"cd ./client && npm install && npm run dev\"",
     "dev": "concurrently \" npm run server \" \" npm run client \"",
+    "build": "concurrently \" cd ./server && npm install \" \"cd ./client && npm install \" ",
     "server": "cd ./server && npm start",
     "client": "cd ./client && npm run dev -- --host",
     "start": "concurrently \"cd ./server && npm start \" \"cd ./client && npm start\""
