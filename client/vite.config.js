@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/productos": {
-        target: "https://backend-kaffo-production-8463.up.railway.app",
+        target: "http://localhost:5050",
         changeOrigin: true,
       },
       "/payment":{
