@@ -17,8 +17,8 @@ const responseRouter = require('./routes/responseRouter');
 // const registerRouter = require('./routes/registerRouter');
 // const apiRouter = require('./routes/apiRouter');
 
-// const io = require('socket.io')(httpServer);
-// global.io = io;
+const io = require('socket.io')(httpServer);
+global.io = io;
 dotenv.config();
 
 // app.set('view engine', 'ejs')
@@ -37,6 +37,21 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'assets')));
 app.use('/productos', homeRouter);
 app.use('/service', serviceRouter);
 app.use('/response', responseRouter);
+
+io.on('connection', (socket) => {
+    console.log("Se conecto")
+    socket.on('message', function (data) {
+        obejtoBorrar.ventas.forEach((element, i) => {
+            if (element.id == data) {
+                element.estado = "Aprobado"
+            }
+        });
+    });
+    let id = 3212323
+    socket.emit('message', function(id){
+        console.log("Emitido")
+    })
+})
 
 httpServer.listen(PORT, () => { console.log("Se inicio el servidor en el puerto N° " + PORT) })
 

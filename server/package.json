@@ -19,6 +19,7 @@
     "json-circular": "^0.0.1",
     "mercadopago": "^1.5.15",
     "morgan": "^1.10.0",
-    "mysql2": "^3.2.3"
+    "mysql2": "^3.2.3",
+    "socket.io": "^2.5.0"
   }
 }
