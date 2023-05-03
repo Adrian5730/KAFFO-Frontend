@@ -18,7 +18,8 @@ const ItemListContainer = () => {
     if (showLoader) setloading(true);
 
     try {
-      const response = await axios.get("http://backend-kaffo-production-8463.up.railway.app/productos");
+      const response = await axios.post("https://backend-kaffo-production-8463.up.railway.app/productos");
+
       setProductos(response.data);
     } catch (error) {
       console.error(error);
