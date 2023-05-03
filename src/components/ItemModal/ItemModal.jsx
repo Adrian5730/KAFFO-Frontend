@@ -30,7 +30,7 @@ const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
       currency_id: 'ARS',
       unit_price: Number(modalData.price)
     }]
-    const getUrl_MP = await axios.post("/payment", orden)
+    const getUrl_MP = await axios.post("https://backend-kaffo-production-8463.up.railway.app/service/payment", orden)
     const paymentUrl = getUrl_MP.data.linkPaymentMP;
     window.open(paymentUrl);
   }

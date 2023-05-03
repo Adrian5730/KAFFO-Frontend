@@ -11,7 +11,7 @@ const ItemListFavorites = () => {
 
   useEffect(() => {
     axios
-      .get("/productos")
+      .post("https://backend-kaffo-production-8463.up.railway.app/productos")
       .then((res) => {
         setProducts(res.data);
         setloading(false);
