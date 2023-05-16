@@ -11,6 +11,10 @@
     position: absolute;
 }
 
+.container-cards-cart{
+    padding-bottom: 115px;
+}
+
 .container-cart {
     display: flex;
     padding: 20px 5px;
@@ -18,4 +22,30 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding-bottom: 40px;
+}
+
+.container-BannerBuy{
+    width: 96%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 115px;
+    margin: 0 4px;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+#btn-buy-cart{
+    background-color: #0C3827;
+    font-weight: bold;
+    text-transform: none;
+    padding: 10px;
+}
+
+.total-price{
+    padding: 10px;
 }
