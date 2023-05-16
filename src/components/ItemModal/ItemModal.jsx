@@ -23,6 +23,19 @@ const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
     onFavoriteChange();
   };
 
+  const add_item_cart = async () => {
+    let products_cart = JSON.parse(localStorage.getItem("products_cart")) || [];
+    const productIndex = products_cart.findIndex(item => item[0] === modalData.code);
+
+    if (productIndex !== -1) {
+      products_cart[productIndex][1]++;
+    } else {
+      products_cart.push([modalData.code, 1]);
+    }
+    localStorage.setItem("products_cart", JSON.stringify(products_cart));
+    onClose();
+  }
+
   const buy_now = async () => {
     const orden = [{
       title: modalData.name,
@@ -65,7 +78,7 @@ const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
         </div>
 
         <div className="button-container">
-          <Button id="cart-button" variant="contained" size="medium">
+          <Button id="cart-button" onClick={add_item_cart} variant="contained" size="medium">
             Agregar al carrito
           </Button>
 
