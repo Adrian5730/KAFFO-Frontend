@@ -32,3 +32,15 @@ ul.list-nav {
     gap: 25px;
     width: 100%;
 }
+
+.index-quantity{
+    padding: 0px 6px;
+    border-radius: 15px;
+    border: 0px;
+    background-color: #0C3827;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    position: absolute;
+    right: 28px;
+}

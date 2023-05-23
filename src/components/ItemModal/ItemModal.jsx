@@ -4,7 +4,7 @@ import { Button, IconButton, Modal } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import axios from "axios";
 
-const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
+const ItemModal = ({ open, onClose, modalData, onFavoriteChange, setItemCart }) => {
   const favorite = JSON.parse(localStorage.getItem("favorites")) || [];
   const isFavorite = favorite.includes(modalData.code);
 
@@ -33,6 +33,7 @@ const ItemModal = ({ open, onClose, modalData, onFavoriteChange }) => {
       products_cart.push([modalData.code, 1]);
     }
     localStorage.setItem("products_cart", JSON.stringify(products_cart));
+    setItemCart()
     onClose();
   }
 

@@ -3,7 +3,7 @@ import "./ItemFavorite.css";
 import { useEffect, useRef, useState } from "react";
 
 const ItemFavorite = (props) => {
-  const { name, code, description, price } = props;
+  const { name, code, description, price, onClick } = props;
 
   const [claseActiva, setClaseActiva] = useState(false);
   const containerRef = useRef(null);
@@ -13,7 +13,8 @@ const ItemFavorite = (props) => {
     setClaseActiva(favoritos.includes(code));
   }, [code]);
 
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = (event) => {
+    event.stopPropagation();
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     const index = favorites.indexOf(code);
     if (index !== -1) {
@@ -28,7 +29,7 @@ const ItemFavorite = (props) => {
   };
 
   return (
-    <div className="card-favorite">
+    <div className="card-favorite" onClick={onClick}>
       <img
         src={`images/capsulas/${code}.jpg`}
         alt={`Imagen de producto ${code}`}

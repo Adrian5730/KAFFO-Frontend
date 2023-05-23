@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Button } from "@mui/material";
 import axios from "axios";
 import LoadingContainer from "../LoadingContainer/LoadingContainer";
 import ItemCart from "./ItemCart/ItemCart";
 import "./ItemListCartContainer.css";
+import NavBar from "../NavBar/NavBar";
 
 const ItemListCartContainer = () => {
   const [products, setProducts] = useState(null);
@@ -11,6 +12,7 @@ const ItemListCartContainer = () => {
   const [localCart, setLocalCart] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [total, setTotal] = useState(0);
+  const [quantityCart, setQuantityCart] = useState([]);
 
   useEffect(() => {
     const updateProduct = async () => {
@@ -29,6 +31,14 @@ const ItemListCartContainer = () => {
     };
 
     updateProduct();
+  }, []);
+
+  const updateCantidadCart = useCallback(async (showLoader = true) => {
+    if (showLoader) setLoading(true);
+    const localCart = JSON.parse(localStorage.getItem("products_cart")) || [];
+    if (localCart.length !== 0) {
+      setQuantityCart(localCart.length);
+    }
   }, []);
 
   useEffect(() => {
@@ -67,6 +77,7 @@ const ItemListCartContainer = () => {
       (product) => product.code !== code
     );
     setCartProducts(updatedCartProducts);
+    setQuantityCart(updatedCartProducts.length)
   };
 
   const buy = async () => {
@@ -88,6 +99,11 @@ const ItemListCartContainer = () => {
       window.open(paymentUrl);
     }
   };
+
+  
+  useEffect(() => {
+    updateCantidadCart();
+  }, []);
 
   return (
     <>
@@ -130,6 +146,7 @@ const ItemListCartContainer = () => {
           <p>No tienes cápsulas agregadas al carrito.</p>
         </div>
       )}
+      <NavBar page={"cart"} quantityCart={quantityCart} />
     </>
   );
 };

@@ -11,7 +11,6 @@ const HomeContainer = () => {
       <ImageBack />
       <HeaderContainer />
       <ItemListContainer />
-      <NavBar page='home'/>
     </div>
   );
 };

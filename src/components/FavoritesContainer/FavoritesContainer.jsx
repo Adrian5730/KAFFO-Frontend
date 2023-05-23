@@ -10,7 +10,6 @@ const FavoritesContainer = () => {
       <ImageBack />
       <HeaderContainer />
       <ItemListFavorites />
-      <NavBar page={"favorites"} />
     </div>
   );
 };

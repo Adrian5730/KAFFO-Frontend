@@ -10,7 +10,6 @@ const CartContainer = () => {
       <ImageBack />
       <HeaderContainer />
       <ItemListCartContainer />
-      <NavBar page={"cart"} />
     </div>
   );
 };
