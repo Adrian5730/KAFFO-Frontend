@@ -9,7 +9,6 @@ import ResponseContainer from './components/ResponseContainer/ResponseContainer'
 
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomeContainer />}></Route>
         <Route path='/cart' element={<CartContainer />}></Route>
@@ -17,7 +16,7 @@ function App() {
         <Route path='/user/:login_register' element={<UserContainer />}></Route>
         <Route path='/response/:status_MP' element={<ResponseContainer />}></Route>
       </Routes>
-    </BrowserRouter>
+
   )
 }
 
