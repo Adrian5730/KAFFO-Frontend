@@ -14,7 +14,7 @@ const Login = () => {
       })
       .catch((error) => {
         // Manejo de errores
-        console.error(error);
+        // console.error(error);
       });
   });
 

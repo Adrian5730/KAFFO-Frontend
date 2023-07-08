@@ -7,11 +7,6 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const HomeContainer = () => {
-
-  useEffect(() => {
-    const user = axios.get("https://backend-kaffo-production-8463.up.railway.app/login/user")
-    console.log(user)
-  })
   return (
     <div className="container">
       <ImageBack />
