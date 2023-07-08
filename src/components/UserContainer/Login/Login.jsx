@@ -6,7 +6,7 @@ import axios from "axios";
 const Login = () => {
   useEffect(() => {
     axios
-      .get("http://localhost:5050/login/user", { withCredentials: true, credentials : "include" })
+      .get("https://backend-kaffo-production-8463.up.railway.app/login/user", { withCredentials: true, credentials : "include" })
       .then((response) => {
         // Aquí puedes acceder a los datos de la sesión en response.data
         console.log(response.data);
@@ -24,7 +24,7 @@ const Login = () => {
       <div className="container-form-login">
         <form
           className="form-login"
-          action="http://localhost:5050/login"
+          action="https://backend-kaffo-production-8463.up.railway.app/login"
           method="POST"
         >
           <ul>
