@@ -6,7 +6,7 @@
     padding: 10px;
     text-align: center;
     margin-top: 20px;
-
+    cursor: pointer;
 }
 
 .btn-login {
@@ -14,4 +14,28 @@
     background-color: #BA521D;
     color: #FFF;
     font-size: 20px;
+}
+
+.btn-register {
+    cursor: pointer;
+}
+
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.google-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
 }
