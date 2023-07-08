@@ -9,7 +9,7 @@ import { useEffect } from "react";
 const HomeContainer = () => {
 
   useEffect(() => {
-    const user = axios.get("http://localhost:5050/user")
+    const user = axios.get("https://backend-kaffo-production-8463.up.railway.app/login/user")
     console.log(user)
   })
   return (
